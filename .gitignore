@@ -1,0 +1,21 @@
+# Ignore Python and Cython build artifacts
+/.venv/
+**/__pycache__/
+**/build/
+*.c
+*.h
+
+# Ignore output directories
+**/output*/
+
+# Ignore images directories and all content inside them
+/images/
+/assets/images/
+**/images/
+
+# OS and editor junk
+.DS_Store
+Thumbs.db
+
+# Keep README or gitkeep if you want an empty images folder tracked
+!images/.gitkeep

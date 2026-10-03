@@ -1,0 +1,32 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run Watermark Test",
+            "type": "shell",
+            "command": "${workspaceFolder}/.venv/Scripts/python.exe ${workspaceFolder}/tests/test_watermark.py",
+            "problemMatcher": [],
+            "group": {
+                "is_default": true
+            }
+        },
+        {
+            "label": "Create a virtual environment",
+            "type": "shell",
+            "command": "python -m venv ${workspaceFolder}/.venv",
+            "problemMatcher": []
+        },
+        {
+            "label": "Install venv required dependencies",
+            "type": "shell",
+            "command": "${workspaceFolder}/.venv/Scripts/python.exe -m pip install -r requirements.txt",
+            "problemMatcher": []
+        },
+        {
+            "label": "Cythonize using MinGW compiler",
+            "type": "shell",
+            "command": "cd ${workspaceFolder} && .venv/Scripts/python setup.py build_ext --inplace --compiler=mingw32",
+            "problemMatcher": []
+        }
+    ]
+}
