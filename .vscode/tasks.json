@@ -2,13 +2,19 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Run Watermark Test",
+            "label": "Run WaterFrost CLI Test",
             "type": "shell",
-            "command": "${workspaceFolder}/.venv/Scripts/python.exe ${workspaceFolder}/tests/test_watermark.py",
+            "command": "${workspaceFolder}/tests/test_waterfrost.bat",
             "problemMatcher": [],
             "group": {
                 "is_default": true
             }
+        },
+        {
+            "label": "Run Watermark Test",
+            "type": "shell",
+            "command": "${workspaceFolder}/.venv/Scripts/python.exe ${workspaceFolder}/tests/test_watermark.py",
+            "problemMatcher": [],
         },
         {
             "label": "Create a virtual environment",
