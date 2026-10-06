@@ -4,7 +4,7 @@ from pathlib import Path
 from watermark.watermark import watermark_apply, watermark_extract
 
 
-def main():
+def main() -> int:
     script_name = Path(sys.argv[0]).name
 
     """Main function to handle command-line arguments."""
@@ -35,17 +35,17 @@ def main():
     # Parse arguments
     args = parser.parse_args()
 
-    # Extract directory path from args.output full path 
-    # and create it if it doesn't exist
-    output_path = Path(args.output)
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-
     # Dispatch command to the relevant function
+    exit_code = -1  # error
     if args.command == 'embed':
-        watermark_apply(args.input, args.watermark, args.password, args.output)
+        if (watermark_apply(args.input, args.watermark, args.password, args.output)):
+            exit_code = 0  # success
     elif args.command == 'extract':
-        watermark_extract(args.input, args.password, args.output)
+        if (watermark_extract(args.input, args.password, args.output)):
+            exit_code = 0  # success
+
+    return exit_code
 
 
 if __name__ == "__main__":
-    main()
+    exit(main())

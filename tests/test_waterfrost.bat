@@ -11,6 +11,7 @@ rem Check if output directory exists and remove it with all its content.
 if exist ".\output" (
     rd /s /q ".\output"
 )
+md .\output
 
 rem Run WaterFrost CLI (embed example)
 .\..\.venv\Scripts\python.exe .\..\main_cli.py embed --input carrier.jpg --watermark asset.txt --password NotSecretPassword --output output\watermarked.png

@@ -31,9 +31,15 @@ if __name__ == "__main__":
     ASSET_RECOVERED_PATH = os.path.join(OUTPUT_DIRECTORY, "asset_recovered"+asset_extension)
     WATERMARKED_IMAGE_PATH = os.path.join(OUTPUT_DIRECTORY, "watermarked.png")
 
-    # Embed and extract an asset as a watermark
-    watermark_apply(CARRIER_PATH, ASSET_PATH, PASSWORD, WATERMARKED_IMAGE_PATH)
-    watermark_extract(WATERMARKED_IMAGE_PATH, PASSWORD, ASSET_RECOVERED_PATH)
+    # Embed an asset as a watermark
+    if not watermark_apply(CARRIER_PATH, ASSET_PATH, PASSWORD, WATERMARKED_IMAGE_PATH):
+        print("FAILED to embed the asset in the image.")
+        exit(-1)
+
+    # Extract the asset from a watermarked image
+    if not watermark_extract(WATERMARKED_IMAGE_PATH, PASSWORD, ASSET_RECOVERED_PATH):
+        print("FAILED to recover the asset from the image.")
+        exit(-1)
 
     # Verify if the recovered asset matches the original source
     with open(ASSET_PATH, 'rb') as binary_f1:
